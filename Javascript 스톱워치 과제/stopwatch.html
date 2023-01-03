@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>피로그래밍 스톱워치</h1>
+    <div class="wrapper" id="wrapper">
+        <div class="display">
+          <p class="timerDisplay" id="timerSec">00</p> :
+          <p class="timerDisplay" id="timerMilisec">00</p>
+        </div>
+        
+      
+        <div class="buttons">
+          <button type="button" id="startBtn">Start</button>
+          <button type="button" id="lapBtn">Stop</button>
+          <button type="button" id="resetBtn">Reset</button>
+        </div>
+      
+        <h1>구간 기록</h1>
+      
+        <div id="laps">
+          <p id="lapRecord"></p>
+        </div>
+      </div>      
+<script>const lapBtn = document.getElementById('lapBtn');
+    const timerMilliSec = document.getElementById('timerMilliSec');
+    const timerSec = document.getElementById('timerSec');
+    const startBtn = document.getElementById('startBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const lapRecord = document.getElementById('lapRecord');
+    
+    let seconds = 0;
+    let miliseconds = 0;
+    
+    let displayMilisec = miliseconds;
+    let displaySec = seconds;
+    
+    let interval = null;
+    
+    let status = "stopped";
+    
+    let lapNow = null;
+
+    let allcheck2 = false;
+    
+    function start() {
+      miliseconds++;
+    
+      if (miliseconds < 10) displayMilisec = "0" + miliseconds.toString();
+      else displayMilisec = miliseconds;
+    
+      if (seconds < 10) displaySec = "0" + seconds.toString();
+      else displaySec = seconds;
+    
+    
+      if (miliseconds / 100 === 1) {
+        seconds++;
+        miliseconds = 0;
+    
+      }
+    
+    
+    
+      timerMilisec.innerHTML = displayMilisec;
+      timerSec.innerHTML = displaySec;
+    
+    }
+    
+    function startStop() {
+      if (status === "stopped") {
+        interval = setInterval(start, 10);
+        startBtn.innerHTML = "Start";
+        status = "started";
+      } 
+    }
+    
+    function reset() {
+      clearInterval(interval);
+      miliseconds = 0;
+      seconds = 0;
+      timerMilisec.innerHTML = "00";
+      timerSec.innerHTML = "00";
+      timerMins.innerHTML = "00";
+      timerHrs.innerHTML = "00";
+      startBtn.innerHTML = "Start";
+      lapRecord.innerHTML = '';
+      status = "stopped";
+    }
+    
+    function lap() {
+        if (status === "started"){
+          clearInterval(interval);
+          startBtn.innerHTML = "Start";
+          status = "stopped";    
+        }
+  
+        lapNow = `<div class="lap"> ${seconds} : ${miliseconds}</div>`;
+        lapRecord.innerHTML += lapNow;
+        type="checkbox"
+      }
+      
+    lapBtn.addEventListener('click', lap);
+    startBtn.addEventListener('click', startStop);
+    resetBtn.addEventListener('click', reset);
+
+    document.querySelector("input[name=allcheck]").addEventListener("change", function (e) {
+        e.preventDefault();
+        var list = document.querySelectorAll("input[name=hobby]");
+        for (var i = 0; i < list.length; i++) {
+            list[i].checked = this.checked;
+        }
+    });
+
+    
+    </script>
+</body>
+</html>
+
