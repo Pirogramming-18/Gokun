@@ -1,7 +1,8 @@
-import random
-
-num=0
-player='B'
+import random as R
+def brGame():
+    num=0
+    pc=1
+    #0: com 1: player
 
 try:
     while True:
