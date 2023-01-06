@@ -1,6 +1,5 @@
 num=0
 player='B'
-player2='A'
 end = False
 try:
     while True:
@@ -13,6 +12,7 @@ try:
                 if (0<a<4):
                  for _ in range(a):  
                         if num == 31:
+                                print ('player{0} 승'.format(player))
                                 break
                         num += 1
                         print ('player{0}:{1}'.format(player, num))
