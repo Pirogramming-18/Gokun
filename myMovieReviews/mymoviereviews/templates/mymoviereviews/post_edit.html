@@ -4,23 +4,23 @@
     <h1>Movie review🍿</h1>
     <form action="/posts/{{ post.pk }}/detail" method="post.pk">
       {% csrf_token %}
-      <div>제목:<input name="title" placeholder="제목을 입력해주세요!" /><br>
+      <div>제목:<input name="title" placeholder="제목을 입력해주세요!" value="{{post.title}}" /><br>
         <br />
-        <div>개봉년도:<input name="year" /></div>
+        <div>개봉년도:<input name="year" value="{{post.year}}"/></div>
         <br />
-        <div>장르:<input name="jangre"/></div>
+        <div>장르:<input name="jangre" value="{{post.jangre}}"/></div>
         <br />
-        <div>별점:<input name="score" /></div>
+        <div>별점:<input name="score" value="{{post.score}}"/></div>
         <br />
-        <div>러닝타임:<input name="time"/></div>
+        <div>러닝타임:<input name="time" value="{{post.time}}"/></div>
         <br />
         <div>리뷰:</div> <br> 
-        <textarea name="review"></textarea><br>
+        <textarea name="review" value="{{post.review}}"></textarea><br>
         <br>
     
-        <div>감독:<input name="director" /></div>
+        <div>감독:<input name="director" value="{{post.director}}"/></div>
         <br>
-        <div>배우:<input name="actor" /></div>
+        <div>배우:<input name="actor" value="{{post.actor}}"/></div>
         <div>
         <br>
           <input type="submit" value="save" />
