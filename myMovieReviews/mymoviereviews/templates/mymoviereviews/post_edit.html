@@ -1,0 +1,32 @@
+{% extends 'mymoviereviews/base.html' %}
+
+{% block content %}
+    <h1>Movie review🍿</h1>
+    <form action="/posts/{{ post.pk }}/detail" method="post.pk">
+      {% csrf_token %}
+      <div>제목:<input name="title" placeholder="제목을 입력해주세요!" /><br>
+        <br />
+        <div>개봉년도:<input name="year" /></div>
+        <br />
+        <div>장르:<input name="jangre"/></div>
+        <br />
+        <div>별점:<input name="score" /></div>
+        <br />
+        <div>러닝타임:<input name="time"/></div>
+        <br />
+        <div>리뷰:</div> <br> 
+        <textarea name="review"></textarea><br>
+        <br>
+    
+        <div>감독:<input name="director" /></div>
+        <br>
+        <div>배우:<input name="actor" /></div>
+        <div>
+        <br>
+          <input type="submit" value="save" />
+        </div>    
+    </form>
+    {% endblock %}
+
+
+
