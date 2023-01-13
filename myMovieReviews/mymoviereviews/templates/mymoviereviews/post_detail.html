@@ -1,0 +1,20 @@
+{% extends 'mymoviereviews/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if post.published_date %}
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+        {% endif %}
+        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">수정하기</a>
+        <h1>{{ post.title }}</h1>
+        <p>개봉년도:{{ post.year|linebreaksbr }}</p>
+        <p>장르:{{ post.jangre|linebreaksbr }}</p>
+        <p>별점:{{ post.score|linebreaksbr }}</p>
+        <p>러닝타임:{{ post.time|linebreaksbr }}</p>
+        <p>리뷰:{{ post.review|linebreaksbr }}</p>
+        <p>감독:{{ post.director|linebreaksbr }}</p>
+        <p>배우:{{ post.actor|linebreaksbr }}</p>
+</div>
+{% endblock %}

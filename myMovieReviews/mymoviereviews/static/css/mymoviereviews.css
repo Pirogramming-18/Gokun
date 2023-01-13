@@ -1,0 +1,16 @@
+body{
+    padding-left: 20px;
+}
+
+h1 a {
+    color: black;
+}
+
+.jm{
+    padding-right: 15px;
+}
+
+[name="content"]{
+    width: 500px;
+    height: 200px;
+}
