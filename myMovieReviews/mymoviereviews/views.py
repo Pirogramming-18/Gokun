@@ -12,6 +12,8 @@ def post_list(request):
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post = Post.objects.all().get(id=pk)
+    post = Post.objects.get(id=pk)
+    post.delete
     return render(request, 'mymoviereviews/post_detail.html', {'post': post})
 
 def post_new(request):
@@ -42,8 +44,8 @@ def post_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'mymoviereviews/post_edit.html', {'post': post})
 
-def posts_delete(request, pk):
-    if request.method == "POST":
-        post = Post.objects.get(id=pk)
-        post.delete()
-    return redirect("/")
+def post_delete(request,pk,*args,**kwargs):
+        if request.method == "POST":
+            post = Post.objects.get(id=pk)
+            post.delete()
+        return redirect("/")
