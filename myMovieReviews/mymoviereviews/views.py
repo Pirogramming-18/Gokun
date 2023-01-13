@@ -11,6 +11,7 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    post = Post.objects.all().get(id=pk)
     return render(request, 'mymoviereviews/post_detail.html', {'post': post})
 
 def post_new(request):
@@ -31,11 +32,18 @@ def post_edit(request, pk):
     if request.method == "POST":
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
+            print ('hello')
             post = form.save(commit=False)
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('/', pk=post.pk)
+        return redirect(f"/post/detail/{pk}/")
     else:
         form = PostForm(instance=post)
     return render(request, 'mymoviereviews/post_edit.html', {'post': post})
+
+def posts_delete(request, pk):
+    if request.method == "POST":
+        post = Post.objects.get(id=pk)
+        post.delete()
+    return redirect("/")

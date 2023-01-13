@@ -1,8 +1,7 @@
 {% extends 'mymoviereviews/base.html' %}
-
 {% block content %}
     <h1>Movie review🍿</h1>
-    <form action="/posts/{{ post.pk }}/detail" method="post.pk">
+    <form action="/post/{{ post.pk }}/edit/" method="post">
       {% csrf_token %}
       <div>제목:<input name="title" placeholder="제목을 입력해주세요!" value="{{post.title}}" /><br>
         <br />
