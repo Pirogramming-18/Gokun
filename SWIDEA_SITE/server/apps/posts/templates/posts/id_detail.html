@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
+    <title>SWIDEA</title>
+  </head>
+  <body>
+    <div>
+    <div class="title">Idea list</div> <br/>
+    나의 아이디어를 잊지 말고 기록해 보세요
+    </div>
+    {% for post in post_list %}
+    <article>
+        {%if post.image %}
+        <P>
+            <img src="{{post.image.url}}">
+        </P>
+        {%endif%}
+        <div>
+            <p><a href="{% url 'posts:detail' post.pk%}">{{post.title}}</a></p>
+            <div>예상개발 툴 : {{post.devtool}}</div>
+            <div>아이디어 관심도 : {{post.interest}}</div>
+
+        </div>
+    </article>
+    <hr />
+    {% endfor %}
+
+    <a href="{% url 'posts:create' %}">
+        <img src="{%static 'image/plus.png'%}">
+    </a>
+</body>
+
+</html>

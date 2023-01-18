@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
+</head>
+    <title>아이디어 - 새 아이디어 작성</title>
+  </head>
+  <body>
+    <h1>Idea Register</h1> <br />
+    <small>아이디어 등록 페이지 입니다. 당신의 아이디어를 잊지 말고 기록하세요!</small><br/>
+    <br />
+    <form action="/posts/create" method="POST">
+      {% csrf_token %}
+      <table>
+        {{form.as_table}}
+      </table>
+      <input type="submit" value="제출" />
+    </form>
+</body>
+</html>
