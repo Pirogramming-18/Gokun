@@ -9,6 +9,10 @@
     <title>SWIDEA</title>
 </head>
 <body>
+    <div>
+        <div class="title">Idea list</div> <br/>
+        나의 아이디어를 잊지 말고 기록해 보세요
+        </div>    
     <a href="/posts/create">아이디어 등록</a>
     </hr>
     
@@ -16,8 +20,8 @@
     <article>
     <div>
     <p><a href="/posts/{{post.pk}}">{{post.title}}</a></p>
-    <small>{{post.region}}</small>
-    <p>{{ post.price }}</p>
+    <small>{{post.devtool}}</small>
+    <p>{{ post.rate}}</p>
     </div>
     </article>
     <hr />

@@ -3,8 +3,8 @@ from .models import Post
 from .forms import idForm
 
 def id_list(request):
-    post_list=Post.objects.order_by('name')
-    context = {'post_list':post_list}
+    posts=Post.objects.all().order_by('title')
+    context = {'posts':posts}
     return render(request,"posts/id_list.html", context=context)
 
 def id_detail(request,pk,*args, **kwargs):

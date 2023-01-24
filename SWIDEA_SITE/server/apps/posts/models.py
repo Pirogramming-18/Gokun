@@ -8,8 +8,8 @@ class Post(models.Model):
         ('java','Java'),
         ('c++','C++')
     ]   
-    name = models.CharField(max_length=64)
+    title = models.CharField(max_length=64)
     image = models.ImageField(blank=True, upload_to='posts/%Y%m%d')
     content = models.TextField()
     rate = models.IntegerField(default=0)
-    devtool = models.CharField(max_length=64, choices=TOOL_CHOICE)
+    devtool = models.CharField(max_length=64, choices=TOOL_CHOICE, null=True)
